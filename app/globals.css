@@ -34,6 +34,12 @@ body {
   overflow-x: hidden;
 }
 
+button:not(:disabled),
+a[href],
+[role="button"]:not([aria-disabled="true"]) {
+  cursor: pointer;
+}
+
 @keyframes glow-pulse {
   0%,
   100% {
@@ -61,6 +67,28 @@ body {
 
 .animate-grid-drift {
   animation: grid-drift 20s linear infinite;
+}
+
+@keyframes map-drift {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-1.5%, -1%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.animate-map-drift {
+  animation: map-drift 90s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-map-drift {
+    animation: none;
+  }
 }
 
 .glass {

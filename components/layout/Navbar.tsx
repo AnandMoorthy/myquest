@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 
 function Logo() {
   return (
-    <a href="#" className="flex items-center gap-2 font-bold text-foreground">
+    <a href="#" className="flex cursor-pointer items-center gap-2 font-bold text-foreground">
       <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-sm text-white">
         MQ
       </span>
@@ -45,7 +45,7 @@ export function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm text-foreground/70 transition-colors hover:text-foreground"
+                className="cursor-pointer text-sm text-foreground/70 transition-colors hover:text-foreground"
               >
                 {link.label}
               </a>
@@ -59,7 +59,7 @@ export function Navbar() {
 
         <button
           type="button"
-          className="rounded-lg p-2 text-foreground md:hidden"
+          className="cursor-pointer rounded-lg p-2 text-foreground md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
@@ -80,7 +80,7 @@ export function Navbar() {
                 <a
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="block py-2 text-foreground/80 hover:text-foreground"
+                  className="block cursor-pointer py-2 text-foreground/80 hover:text-foreground"
                 >
                   {link.label}
                 </a>

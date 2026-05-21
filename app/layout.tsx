@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import { BackgroundMap } from "@/components/map/BackgroundMap";
 import { ModalProvider } from "@/components/providers/ModalProvider";
 import { ComingSoonModal } from "@/components/ui/ComingSoonModal";
 import "./globals.css";
@@ -30,8 +31,9 @@ export default function RootLayout({
       <body
         className={`${plusJakarta.variable} min-h-full font-sans antialiased`}
       >
+        <BackgroundMap />
         <ModalProvider>
-          {children}
+          <div className="relative z-10">{children}</div>
           <ComingSoonModal />
         </ModalProvider>
       </body>
