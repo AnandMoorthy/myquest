@@ -1,4 +1,5 @@
 import { Globe, Mail, Share2 } from "lucide-react";
+import { Logo } from "@/components/ui/Logo";
 
 const socialLinks = [
   { icon: Share2, href: "#", label: "Share" },
@@ -16,16 +17,12 @@ export function Footer() {
   return (
     <footer className="border-t border-white/5 px-6 py-12 lg:px-8">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-8 sm:flex-row">
-        <div className="flex flex-col items-center gap-4 sm:items-start">
-          <a href="#" className="flex items-center gap-2 font-bold text-foreground">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-sm text-white">
-              MQ
-            </span>
-            <span className="text-lg">
-              My<span className="text-primary">Quest</span>
-            </span>
-          </a>
-          <p className="text-sm text-foreground/50">
+        <div className="flex flex-col items-center gap-3 sm:items-start">
+          <Logo href="#" />
+          <p className="max-w-xs text-center text-sm text-foreground/50 sm:text-left">
+            Find your people nearby.
+          </p>
+          <p className="text-sm text-foreground/40">
             © {new Date().getFullYear()} MyQuest. All rights reserved.
           </p>
         </div>

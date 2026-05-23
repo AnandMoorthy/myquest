@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import { withBasePath } from "@/lib/basePath";
 import { BackgroundMap } from "@/components/map/BackgroundMap";
 import { ModalProvider } from "@/components/providers/ModalProvider";
 import { ComingSoonModal } from "@/components/ui/ComingSoonModal";
@@ -12,12 +13,42 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: process.env.NEXT_PUBLIC_SITE_URL
+    ? new URL(process.env.NEXT_PUBLIC_SITE_URL)
+    : undefined,
   title: "MyQuest | Discover spontaneous experiences around you",
   description:
-    "Join nearby micro activities or host your own quests. MyQuest helps you discover and host real world experiences nearby.",
+    "Join nearby micro activities or host your own quests in minutes. MyQuest is the map for spontaneous real-world connection. Discover, host, and meet people around you.",
+  icons: {
+    icon: [
+      {
+        url: withBasePath("/icon-32.png"),
+        sizes: "32x32",
+        type: "image/png",
+      },
+      {
+        url: withBasePath("/icon-16.png"),
+        sizes: "16x16",
+        type: "image/png",
+      },
+    ],
+    shortcut: withBasePath("/icon-32.png"),
+    apple: withBasePath("/apple-icon.png"),
+  },
   openGraph: {
+    title: "MyQuest | Discover spontaneous experiences around you",
+    description:
+      "Join nearby micro activities or host your own quests. Discover, host, and meet people around you.",
+    images: [
+      { url: withBasePath("/og.png"), width: 1200, height: 630, alt: "MyQuest" },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
     title: "MyQuest",
     description: "Discover spontaneous experiences around you.",
+    images: [withBasePath("/og.png")],
   },
 };
 

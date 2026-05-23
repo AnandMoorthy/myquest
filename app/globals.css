@@ -3,9 +3,9 @@
 :root {
   --background: #0a0a0f;
   --foreground: #f4f4f5;
-  --primary: #2563eb;
+  --primary: #3b82f6;
   --accent: #60a5fa;
-  --orange: #f97316;
+  --orange: #f59e0b;
   --surface: #0f1117;
   --muted: #71717a;
   --border: rgba(255, 255, 255, 0.08);
@@ -98,8 +98,37 @@ a[href],
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #ffffff 0%, #60a5fa 50%, #2563eb 100%);
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #60a5fa 45%,
+    #3b82f6 75%,
+    #f59e0b 100%
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.text-gradient-orange {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-band {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--primary) 25%,
+    var(--orange) 75%,
+    transparent 100%
+  );
+  opacity: 0.5;
 }

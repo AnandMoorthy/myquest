@@ -3,11 +3,17 @@
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { communityFeed, type FeedItem } from "@/data/mockData";
+import {
+  communityFeed,
+  getActivityChips,
+  type FeedItem,
+} from "@/data/mockData";
 import { fadeUp, viewportOnce } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
 function FeedRow({ item }: { item: FeedItem }) {
+  const isHosted = item.action === "hosted";
+
   return (
     <motion.div
       layout
@@ -17,7 +23,14 @@ function FeedRow({ item }: { item: FeedItem }) {
       transition={{ duration: 0.35 }}
       className="flex items-center gap-4 border-b border-white/5 py-4 last:border-0"
     >
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/20 text-sm font-semibold text-accent">
+      <div
+        className={cn(
+          "flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-semibold",
+          isHosted
+            ? "bg-orange/20 text-orange"
+            : "bg-primary/20 text-accent"
+        )}
+      >
         {item.avatar}
       </div>
       <div className="min-w-0 flex-1">
@@ -26,7 +39,14 @@ function FeedRow({ item }: { item: FeedItem }) {
           <span className="text-foreground/60">
             {item.action === "joined" ? "joined" : "hosted"}
           </span>{" "}
-          <span className="font-medium text-accent">{item.quest}</span>
+          <span
+            className={cn(
+              "font-medium",
+              isHosted ? "text-orange" : "text-accent"
+            )}
+          >
+            {item.quest}
+          </span>
         </p>
         {item.count && (
           <p className="mt-0.5 text-xs text-foreground/50">
@@ -49,6 +69,7 @@ export function Community() {
   );
   const [tick, setTick] = useState(0);
   const shouldReduceMotion = useReducedMotion();
+  const activityChips = getActivityChips(communityFeed, 4);
 
   useEffect(() => {
     if (shouldReduceMotion) return;
@@ -70,12 +91,13 @@ export function Community() {
   }, [shouldReduceMotion]);
 
   return (
-    <section id="community" className="relative px-6 py-24 lg:px-8">
+    <section id="community" className="section-band relative px-6 py-24 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <SectionHeader
           label="Community"
           title="Real people, real adventures"
-          description="See what's happening around you right now."
+          description="See what's happening around you right now. Quests going live every minute."
+          accentLabel
         />
 
         <motion.div
@@ -105,18 +127,14 @@ export function Community() {
           </div>
 
           <div className="mt-6 flex flex-wrap justify-center gap-2">
-            {["Rahul joined Sunset Ride", "Ananya hosted Coffee Meetup", "12 joined Board Game Night"].map(
-              (chip) => (
-                <span
-                  key={chip}
-                  className={cn(
-                    "rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-foreground/60"
-                  )}
-                >
-                  {chip}
-                </span>
-              )
-            )}
+            {activityChips.map((chip) => (
+              <span
+                key={chip}
+                className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-foreground/60"
+              >
+                {chip}
+              </span>
+            ))}
           </div>
         </motion.div>
       </div>

@@ -2,7 +2,7 @@ type MapPatternProps = {
   className?: string;
 };
 
-/** Stylized city blocks + roads — reads as a map at low opacity */
+/** Stylized city blocks + roads. Reads as a map at low opacity. */
 export function MapPattern({ className }: MapPatternProps) {
   return (
     <svg
@@ -39,9 +39,10 @@ export function MapPattern({ className }: MapPatternProps) {
         width="180"
         height="120"
         rx="8"
+        className="text-orange"
         stroke="currentColor"
         strokeWidth="0.75"
-        strokeOpacity="0.4"
+        strokeOpacity="0.35"
       />
       <rect
         x="640"

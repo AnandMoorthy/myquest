@@ -5,22 +5,10 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useModal } from "@/components/providers/ModalProvider";
 import { Button } from "@/components/ui/Button";
+import { Logo } from "@/components/ui/Logo";
 import { navLinks } from "@/data/mockData";
 import { useScrollNavbar } from "@/hooks/useScrollNavbar";
 import { cn } from "@/lib/utils";
-
-function Logo() {
-  return (
-    <a href="#" className="flex cursor-pointer items-center gap-2 font-bold text-foreground">
-      <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-sm text-white">
-        MQ
-      </span>
-      <span className="text-lg tracking-tight">
-        My<span className="text-primary">Quest</span>
-      </span>
-    </a>
-  );
-}
 
 export function Navbar() {
   const scrolled = useScrollNavbar();
@@ -38,9 +26,9 @@ export function Navbar() {
         )}
         aria-label="Main navigation"
       >
-        <Logo />
+        <Logo priority href="#" />
 
-        <ul className="hidden items-center gap-8 md:flex">
+        <ul className="hidden items-center gap-6 lg:flex xl:gap-8">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
@@ -53,13 +41,13 @@ export function Navbar() {
           ))}
         </ul>
 
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <Button onClick={openModal}>Get Early Access</Button>
         </div>
 
         <button
           type="button"
-          className="cursor-pointer rounded-lg p-2 text-foreground md:hidden"
+          className="cursor-pointer rounded-lg p-2 text-foreground lg:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
@@ -72,7 +60,7 @@ export function Navbar() {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="glass mx-auto mt-2 max-w-6xl rounded-2xl p-4 md:hidden"
+          className="glass mx-auto mt-2 max-w-6xl rounded-2xl p-4 lg:hidden"
         >
           <ul className="space-y-3">
             {navLinks.map((link) => (

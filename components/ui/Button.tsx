@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 type ButtonProps = {
   children: React.ReactNode;
   onClick?: () => void;
-  variant?: "primary" | "outline" | "ghost";
+  variant?: "primary" | "accent" | "outline" | "ghost";
   className?: string;
   type?: "button" | "submit";
   "aria-label"?: string;
@@ -22,7 +22,9 @@ export function Button({
 }: ButtonProps) {
   const variants = {
     primary:
-      "bg-primary text-white shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:bg-[#1d4ed8]",
+      "bg-primary text-white shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:bg-[#2563eb]",
+    accent:
+      "bg-orange text-white shadow-lg shadow-orange/25 hover:shadow-orange/40 hover:bg-[#d97706]",
     outline:
       "border border-white/15 bg-white/5 text-foreground hover:bg-white/10 hover:border-white/25",
     ghost: "text-foreground/80 hover:text-foreground hover:bg-white/5",
