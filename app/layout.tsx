@@ -27,9 +27,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark h-full scroll-smooth">
+    <html
+      lang="en"
+      className="dark h-full scroll-smooth"
+      suppressHydrationWarning
+    >
       <body
         className={`${plusJakarta.variable} min-h-full font-sans antialiased`}
+        suppressHydrationWarning
       >
         <BackgroundMap />
         <ModalProvider>
