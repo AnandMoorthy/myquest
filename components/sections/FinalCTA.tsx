@@ -29,7 +29,7 @@ export function FinalCTA() {
           </span>
         </h2>
         <p className="mx-auto mt-4 max-w-lg text-lg text-foreground/60">
-          Download MyQuest and start discovering spontaneous experiences in your
+          Download MyQuest and start discovering real-world live experiences in your
           neighborhood. Join early access and be first when we launch in your
           city.
         </p>

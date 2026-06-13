@@ -16,9 +16,9 @@ export const metadata: Metadata = {
   metadataBase: process.env.NEXT_PUBLIC_SITE_URL
     ? new URL(process.env.NEXT_PUBLIC_SITE_URL)
     : undefined,
-  title: "MyQuest | Discover spontaneous experiences around you",
+  title: "MyQuest | Discover real-world live experiences around you",
   description:
-    "Join nearby micro activities or host your own quests in minutes. MyQuest is the map for spontaneous real-world connection. Discover, host, and meet people around you.",
+    "Join nearby micro activities or host your own quests in minutes. MyQuest is the map for real-world live connection. Discover, host, and meet people around you.",
   icons: {
     icon: [
       {
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     apple: withBasePath("/apple-icon.png"),
   },
   openGraph: {
-    title: "MyQuest | Discover spontaneous experiences around you",
+    title: "MyQuest | Discover real-world live experiences around you",
     description:
       "Join nearby micro activities or host your own quests. Discover, host, and meet people around you.",
     images: [
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "MyQuest",
-    description: "Discover spontaneous experiences around you.",
+    description: "Discover real-world live experiences around you.",
     images: [withBasePath("/og.png")],
   },
 };

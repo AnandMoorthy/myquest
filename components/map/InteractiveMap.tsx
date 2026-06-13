@@ -52,7 +52,7 @@ export function InteractiveMap() {
       </div>
 
       {/* Quest pins: full map, above overlays; left pins sit in top/bottom margins */}
-      <div className="absolute inset-0 z-30 overflow-visible">
+      <div className="pointer-events-none absolute inset-0 z-30 overflow-visible">
         {questPins.map((pin) => (
           <QuestPin
             key={pin.id}

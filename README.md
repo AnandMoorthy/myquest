@@ -1,6 +1,6 @@
 # MyQuest Landing Page
 
-A premium, dark mode landing page for **MyQuest**, a social discovery app for nearby micro activities and spontaneous real world experiences.
+A premium, dark mode landing page for **MyQuest**, a social discovery app for nearby micro activities and real-world live experiences.
 
 ## Tech Stack
 

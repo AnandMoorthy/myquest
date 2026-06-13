@@ -47,7 +47,7 @@ export function QuestPin({ pin, isActive, onToggle }: QuestPinProps) {
 
   return (
     <div
-      className={cn("absolute z-10", visibilityClass)}
+      className={cn("pointer-events-auto absolute z-10", visibilityClass)}
       style={{ left: `${pin.x}%`, top: `${pin.y}%`, transform: "translate(-50%, -50%)" }}
     >
       <motion.button

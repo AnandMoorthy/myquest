@@ -136,7 +136,7 @@ export const features: Feature[] = [
   },
   {
     icon: Users,
-    title: "Lightweight spontaneous meetups",
+    title: "Lightweight real-world live meetups",
     description: "Drop a pin, set a time, and meet up.",
   },
 ];
@@ -167,7 +167,7 @@ export const howItWorksSteps: HowItWorksStep[] = [
     step: 3,
     title: "Meet & Explore",
     description:
-      "Show up, connect in person, and turn spontaneous moments into memories you'll actually remember.",
+      "Show up, connect in person, and turn real-world live moments into memories you'll actually remember.",
     icon: Handshake,
   },
 ];
@@ -303,7 +303,7 @@ export const faqItems: FaqItem[] = [
     id: "cost",
     question: "Is MyQuest free to use?",
     answer:
-      "Yes. Browsing quests, joining activities, and hosting your own meetups are free during early access. We may introduce optional premium features later, but spontaneous local connection will always be at the core.",
+      "Yes. Browsing quests, joining activities, and hosting your own meetups are free during early access. We may introduce optional premium features later, but real-world live local connection will always be at the core.",
   },
   {
     id: "safety",

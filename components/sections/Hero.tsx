@@ -36,7 +36,7 @@ export function Hero() {
             className="text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl"
           >
             <span className="text-gradient">
-              Discover spontaneous experiences
+              Discover real-world live experiences
             </span>{" "}
             <span className="text-foreground">around you.</span>
           </motion.h1>
