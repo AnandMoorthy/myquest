@@ -17,6 +17,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: github-pages
     env:
       # Custom domains (e.g. myquest.live) are served from the site root, not /repo-name.
       # Override via repo Settings → Secrets and variables → Actions → Variables if needed.
@@ -40,9 +41,16 @@ jobs:
 
       - name: Verify Supabase env for waitlist
         run: |
-          if [ -z "$NEXT_PUBLIC_SUPABASE_URL" ] || [ -z "$NEXT_PUBLIC_SUPABASE_ANON_KEY" ]; then
-            echo "::error::Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY."
-            echo "Add them under Settings → Secrets and variables → Actions → Variables (or Secrets)."
+          missing=()
+          [ -z "$NEXT_PUBLIC_SUPABASE_URL" ] && missing+=("NEXT_PUBLIC_SUPABASE_URL")
+          [ -z "$NEXT_PUBLIC_SUPABASE_ANON_KEY" ] && missing+=("NEXT_PUBLIC_SUPABASE_ANON_KEY")
+          if [ "${#missing[@]}" -gt 0 ]; then
+            echo "::error::Missing: ${missing[*]}"
+            echo "Add repository Variables (recommended):"
+            echo "  Settings → Secrets and variables → Actions → Variables"
+            echo "Or environment Variables for github-pages:"
+            echo "  Settings → Environments → github-pages → Environment variables"
+            echo "Names must match exactly (including NEXT_PUBLIC_ prefix)."
             exit 1
           fi
           echo "Supabase public env is configured."
