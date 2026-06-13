@@ -1,0 +1,4 @@
+# Supabase local config. Deploy with: supabase db push && supabase functions deploy waitlist-signup
+
+[functions.waitlist-signup]
+verify_jwt = false

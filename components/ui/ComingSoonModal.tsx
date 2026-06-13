@@ -4,12 +4,15 @@ import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useModal } from "@/components/providers/ModalProvider";
+import { getWaitlistErrorMessage, joinWaitlist } from "@/lib/waitlist";
 import { Button } from "./Button";
 
 export function ComingSoonModal() {
   const { isOpen, closeModal } = useModal();
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -25,11 +28,23 @@ export function ComingSoonModal() {
     };
   }, [isOpen, closeModal]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (email.trim() && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (isSubmitting) return;
+
+    setErrorMessage(null);
+    setIsSubmitting(true);
+
+    const result = await joinWaitlist(email);
+
+    setIsSubmitting(false);
+
+    if (result.ok) {
       setSubmitted(true);
+      return;
     }
+
+    setErrorMessage(getWaitlistErrorMessage(result.error));
   };
 
   const handleClose = () => {
@@ -37,6 +52,8 @@ export function ComingSoonModal() {
     setTimeout(() => {
       setEmail("");
       setSubmitted(false);
+      setErrorMessage(null);
+      setIsSubmitting(false);
     }, 300);
   };
 
@@ -107,11 +124,32 @@ export function ComingSoonModal() {
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Enter your email"
                       required
+                      disabled={isSubmitting}
                       aria-label="Email address"
-                      className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-foreground placeholder:text-foreground/40 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-foreground placeholder:text-foreground/40 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 disabled:cursor-not-allowed disabled:opacity-60"
                     />
-                    <Button type="submit" className="w-full">
-                      Join Waitlist
+                    <input
+                      type="text"
+                      name="company"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      aria-hidden="true"
+                      className="hidden"
+                    />
+                    {errorMessage && (
+                      <p
+                        role="alert"
+                        className="rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-sm text-red-200"
+                      >
+                        {errorMessage}
+                      </p>
+                    )}
+                    <Button
+                      type="submit"
+                      className="w-full"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "Joining..." : "Join Waitlist"}
                     </Button>
                   </form>
                 </>

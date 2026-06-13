@@ -9,6 +9,7 @@ type ButtonProps = {
   variant?: "primary" | "accent" | "outline" | "ghost";
   className?: string;
   type?: "button" | "submit";
+  disabled?: boolean;
   "aria-label"?: string;
 };
 
@@ -18,6 +19,7 @@ export function Button({
   variant = "primary",
   className,
   type = "button",
+  disabled = false,
   "aria-label": ariaLabel,
 }: ButtonProps) {
   const variants = {
@@ -34,11 +36,12 @@ export function Button({
     <motion.button
       type={type}
       onClick={onClick}
+      disabled={disabled}
       aria-label={ariaLabel}
-      whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
+      whileHover={disabled ? undefined : { scale: 1.02 }}
+      whileTap={disabled ? undefined : { scale: 0.98 }}
       className={cn(
-        "inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        "inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-60",
         variants[variant],
         className
       )}
