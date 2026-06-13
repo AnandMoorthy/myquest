@@ -23,7 +23,7 @@ export function Features() {
           viewport={viewportOnce}
           className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {features.map((feature, index) => {
+          {features.map((feature) => {
             const Icon = feature.icon;
             return (
             <motion.div
@@ -34,8 +34,7 @@ export function Features() {
                 "glass group rounded-2xl p-6 transition-shadow",
                 feature.highlight
                   ? "border-orange/20 hover:shadow-lg hover:shadow-orange/10 lg:scale-[1.02]"
-                  : "hover:shadow-lg hover:shadow-primary/10",
-                index === 4 && "sm:col-span-2 lg:col-span-1 lg:col-start-2"
+                  : "hover:shadow-lg hover:shadow-primary/10"
               )}
             >
               <div

@@ -1,4 +1,5 @@
 import {
+  Bell,
   Compass,
   Handshake,
   MapPin,
@@ -138,6 +139,12 @@ export const features: Feature[] = [
     icon: Users,
     title: "Lightweight real-world live meetups",
     description: "Drop a pin, set a time, and meet up.",
+  },
+  {
+    icon: Bell,
+    title: "Interest-based alerts",
+    description: "Get notified when a matching quest is hosted nearby.",
+    highlight: true,
   },
 ];
 
