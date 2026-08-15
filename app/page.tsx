@@ -1,5 +1,6 @@
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
+import { Contact } from "@/components/sections/Contact";
 import { FAQ } from "@/components/sections/FAQ";
 import { Features } from "@/components/sections/Features";
 import { FinalCTA } from "@/components/sections/FinalCTA";
@@ -18,6 +19,7 @@ export default function Home() {
         <QuestTypes />
         <FAQ />
         <FinalCTA />
+        <Contact />
       </main>
       <Footer />
     </>

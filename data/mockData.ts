@@ -303,6 +303,8 @@ export type FaqItem = {
   id: string;
   question: string;
   answer: string;
+  href?: string;
+  hrefLabel?: string;
 };
 
 export const faqItems: FaqItem[] = [
@@ -334,7 +336,9 @@ export const faqItems: FaqItem[] = [
     id: "privacy",
     question: "What data do you collect?",
     answer:
-      "We use your location only to show nearby quests, not to track you in the background. Profile details are minimal by design. Full privacy policy will be published before public launch.",
+      "We use your location only to show nearby quests, not to track you in the background. Profile details are minimal by design.",
+    href: "/privacy",
+    hrefLabel: "Read our Privacy Policy",
   },
   {
     id: "age",
@@ -346,13 +350,13 @@ export const faqItems: FaqItem[] = [
     id: "cancel",
     question: "What if I need to cancel?",
     answer:
-      "You can leave a quest anytime before it starts. Hosts can cancel or reschedule with one tap, and participants get notified immediately.",
+      "You can leave a quest up to 30 minutes before it starts. Hosts can cancel or reschedule with one tap, and participants get notified immediately.",
   },
   {
     id: "group-size",
     question: "How many people can join a quest?",
     answer:
-      "Hosts set the cap, usually 4 to 12 people for micro experiences. Smaller groups mean better conversations and less awkwardness when you arrive.",
+      "The host decides the group size, usually 4 to 12 people. Smaller groups make it easier to talk and actually meet everyone.",
   },
 ];
 

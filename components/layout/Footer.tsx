@@ -1,16 +1,17 @@
 import { Globe, Mail, Share2 } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
+import { withBasePath } from "@/lib/basePath";
 
 const socialLinks = [
   { icon: Share2, href: "#", label: "Share" },
   { icon: Globe, href: "#", label: "Website" },
-  { icon: Mail, href: "#", label: "Email" },
+  { icon: Mail, href: "mailto:hello@myquest.live", label: "Email" },
 ];
 
 const footerLinks = [
-  { label: "Privacy", href: "#" },
-  { label: "Terms", href: "#" },
-  { label: "Contact", href: "#" },
+  { label: "Privacy", href: withBasePath("/privacy") },
+  { label: "Terms", href: withBasePath("/terms") },
+  { label: "Contact", href: withBasePath("/#contact") },
 ];
 
 export function Footer() {

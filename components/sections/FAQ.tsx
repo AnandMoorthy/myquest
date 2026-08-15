@@ -5,17 +5,22 @@ import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { faqItems } from "@/data/mockData";
+import { withBasePath } from "@/lib/basePath";
 import { fadeUp, viewportOnce } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 
 function FaqAccordionItem({
   question,
   answer,
+  href,
+  hrefLabel,
   isOpen,
   onToggle,
 }: {
   question: string;
   answer: string;
+  href?: string;
+  hrefLabel?: string;
   isOpen: boolean;
   onToggle: () => void;
 }) {
@@ -47,6 +52,18 @@ function FaqAccordionItem({
           >
             <p className="pb-5 text-sm leading-relaxed text-foreground/60">
               {answer}
+              {href && hrefLabel ? (
+                <>
+                  {" "}
+                  <a
+                    href={withBasePath(href)}
+                    className="text-accent underline-offset-2 hover:underline"
+                  >
+                    {hrefLabel}
+                  </a>
+                  .
+                </>
+              ) : null}
             </p>
           </motion.div>
         )}
@@ -80,6 +97,8 @@ export function FAQ() {
               key={item.id}
               question={item.question}
               answer={item.answer}
+              href={item.href}
+              hrefLabel={item.hrefLabel}
               isOpen={openId === item.id}
               onToggle={() =>
                 setOpenId((current) => (current === item.id ? null : item.id))
