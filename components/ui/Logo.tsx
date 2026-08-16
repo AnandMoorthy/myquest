@@ -29,8 +29,13 @@ export function Logo({
         )}
       />
       {variant === "full" && (
-        <span className="text-lg font-bold tracking-tight text-foreground">
-          My<span className="text-primary">Quest</span>
+        <span className="flex flex-col items-start leading-tight">
+          <span className="text-lg font-bold tracking-tight text-foreground">
+            My<span className="text-primary">Quest</span>
+          </span>
+          <span className="text-[11px] font-medium tracking-wide text-foreground/50">
+            Discover. Join. Host.
+          </span>
         </span>
       )}
     </>

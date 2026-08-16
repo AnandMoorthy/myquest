@@ -20,9 +20,6 @@ export function Footer() {
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-8 sm:flex-row">
         <div className="flex flex-col items-center gap-3 sm:items-start">
           <Logo href="#" />
-          <p className="max-w-xs text-center text-sm text-foreground/50 sm:text-left">
-            Find your people nearby.
-          </p>
           <p className="text-sm text-foreground/40">
             © {new Date().getFullYear()} MyQuest. All rights reserved.
           </p>

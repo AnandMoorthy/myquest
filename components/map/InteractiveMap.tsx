@@ -1,19 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { questPins } from "@/data/mockData";
 import { useMouseGradient } from "@/hooks/useMouseGradient";
 import { MapGrid, MapPattern } from "./MapPattern";
-import { QuestPin } from "./QuestPin";
 
 export function InteractiveMap() {
   const { position, handleMouseMove } = useMouseGradient();
-  const [activePinId, setActivePinId] = useState<string | null>(null);
-
-  const handlePinToggle = (pinId: string) => {
-    setActivePinId((current) => (current === pinId ? null : pinId));
-  };
 
   return (
     <div
@@ -47,20 +39,8 @@ export function InteractiveMap() {
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
           className="absolute left-1/2 top-1/2 h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full bg-orange/10 blur-[80px]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/40 to-background/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/50 to-background/25" />
         <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
-      </div>
-
-      {/* Quest pins: full map, above overlays; left pins sit in top/bottom margins */}
-      <div className="pointer-events-none absolute inset-0 z-30 overflow-visible">
-        {questPins.map((pin) => (
-          <QuestPin
-            key={pin.id}
-            pin={pin}
-            isActive={activePinId === pin.id}
-            onToggle={() => handlePinToggle(pin.id)}
-          />
-        ))}
       </div>
     </div>
   );

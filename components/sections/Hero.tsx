@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useModal } from "@/components/providers/ModalProvider";
 import { InteractiveMap } from "@/components/map/InteractiveMap";
+import { HeroPhoneShowcase } from "@/components/sections/HeroPhoneShowcase";
 import { StoreButton } from "@/components/ui/StoreButton";
 import { fadeUp } from "@/lib/motion";
 
@@ -13,14 +14,14 @@ export function Hero() {
     <section className="relative min-h-screen overflow-x-hidden">
       <InteractiveMap />
 
-      <div className="relative z-20 mx-auto flex min-h-screen max-w-6xl flex-col justify-center px-6 pb-20 pt-28 lg:px-8">
+      <div className="relative z-20 mx-auto grid min-h-screen max-w-6xl items-center gap-10 px-6 pb-16 pt-28 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-8 lg:px-8 lg:pb-20">
         <motion.div
           initial="hidden"
           animate="visible"
           variants={{
             visible: { transition: { staggerChildren: 0.12 } },
           }}
-          className="max-w-2xl"
+          className="max-w-xl"
         >
           <motion.button
             type="button"
@@ -33,11 +34,9 @@ export function Hero() {
 
           <motion.h1
             variants={fadeUp}
-            className="text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl"
+            className="text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl xl:text-6xl"
           >
-            <span className="text-gradient">
-              Discover real-world live experiences
-            </span>{" "}
+            <span className="text-gradient">Discover live experiences</span>{" "}
             <span className="text-foreground">around you.</span>
           </motion.h1>
 
@@ -45,9 +44,7 @@ export function Hero() {
             variants={fadeUp}
             className="mt-6 max-w-lg text-lg text-foreground/60 sm:text-xl"
           >
-            Join nearby micro activities or host your own quests in minutes.
-            MyQuest is the map for real-world connection. Discover what&apos;s
-            happening now, meet in person, and skip the endless scroll.
+            Join a nearby quest, or host your own in minutes.
           </motion.p>
 
           <motion.div
@@ -57,6 +54,15 @@ export function Hero() {
             <StoreButton platform="android" onClick={openModal} />
             <StoreButton platform="ios" onClick={openModal} />
           </motion.div>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={fadeUp}
+          className="lg:justify-self-stretch"
+        >
+          <HeroPhoneShowcase />
         </motion.div>
       </div>
 

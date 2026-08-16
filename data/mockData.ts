@@ -371,3 +371,51 @@ export const navLinks = [
   { label: "How it Works", href: "#howitworks" },
   { label: "FAQ", href: "#faq" },
 ];
+
+export type AppScreenshotId =
+  | "map"
+  | "quest-details"
+  | "chat"
+  | "notifications";
+
+export type AppScreenshot = {
+  id: AppScreenshotId;
+  title: string;
+  description: string;
+  /**
+   * Path under /public/screenshots. Leave unset to show the styled placeholder.
+   */
+  src?: string;
+  alt: string;
+};
+
+export const appScreenshots: AppScreenshot[] = [
+  {
+    id: "map",
+    title: "Map view",
+    description: "Browse live quests around you on the map.",
+    src: "/screenshots/map.png",
+    alt: "MyQuest map view showing nearby quest pins in Bengaluru",
+  },
+  {
+    id: "quest-details",
+    title: "Quest details",
+    description: "See who’s going, when it starts, and join in one tap.",
+    src: "/screenshots/quest-details.png",
+    alt: "MyQuest quest details for Cafe Hopping Quest",
+  },
+  {
+    id: "chat",
+    title: "Chat",
+    description: "Coordinate with the group before you meet up.",
+    src: "/screenshots/chat.png",
+    alt: "MyQuest in-quest chat for Cafe Hopping Quest",
+  },
+  {
+    id: "notifications",
+    title: "Notifications",
+    description: "Get alerted when a matching quest is hosted nearby.",
+    src: "/screenshots/notifications.png",
+    alt: "MyQuest notifications screen with nearby quest alerts",
+  },
+];
